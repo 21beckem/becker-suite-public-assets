@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&amp;display=swap" rel="stylesheet" style="cursor: pointer;">
+	<link rel="icon" href="https://raw.githubusercontent.com/21beckem/becker-suite-public-assets/refs/heads/main/logo.png" type="image/png" sizes="16x16">
+	<title>Data</title>
+	<style>
+html, body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Poppins', sans-serif;
+}
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+th, td {
+	border: 1px solid #ccc;
+	padding: 8px;
+	text-align: left;
+}
+th {
+	background-color: #f4f4f4;
+}
+	</style>
+</head>
+
+<body>
+	<div id="table-container">Loading...</div>
+
+	<script>
+const params = new URLSearchParams(window.location.search);
+
+function renderTable(data) {
+	const table = document.createElement('table');
+	let align = params.get('align') || 'left';
+	data.forEach((row, i) => {
+		const tr = document.createElement('tr');
+		row.forEach(cell => {
+			const cellElement = document.createElement(i === 0 ? 'th' : 'td');
+			cellElement.style.textAlign = (i === 0 ? 'center' : align);
+			cellElement.textContent = cell;
+			tr.appendChild(cellElement);
+		});
+		table.appendChild(tr);
+	});
+	return table;
+}
+
+function loadData() {
+	const rawData = params.get('data');
+	const container = document.getElementById('table-container');
+
+	if (!rawData) {
+		container.textContent = 'No data parameter found in the URL.';
+		return;
+	}
+
+	try {
+		const decoded = decodeURIComponent(rawData);
+		const data = JSON.parse(decoded);
+		if (!Array.isArray(data) || !Array.isArray(data[0])) {
+			throw new Error('Data is not a 2D array.');
+		}
+		container.innerHTML = '';
+		container.appendChild(renderTable(data));
+	} catch (error) {
+		container.textContent = 'Error parsing data: ' + error.message;
+	}
+}
+
+		loadData();
+	</script>
+</body>
+
+</html>
