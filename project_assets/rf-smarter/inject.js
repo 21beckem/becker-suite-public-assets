@@ -1,4 +1,3 @@
-()=>{if(window.ALREADYINJECTINGBECKERSUITEHERE)return;window.ALREADYINJECTINGBECKERSUITEHERE=true;document.addEventListener("DOMContentLoaded",()=>{
 function createPanelExperience() {
     const panelWrapperSpace = 150;
     // create stylesheet for easy reverting of panel experience
@@ -392,5 +391,3 @@ function setFavicon(href) {
     }
 }
 setFavicon("https://raw.githubusercontent.com/21beckem/becker-suite-public-assets/refs/heads/main/logo.png");
-
-});}
