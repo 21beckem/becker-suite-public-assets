@@ -303,7 +303,7 @@ async function BECKER_startAutomationProcess() {
         return;
     }
     // check to see if the item input field exists
-    if (!document.getElementById("input_viewItem_Item")) {
+    if (!document.getElementById("input_viewCcDetail_Item")) {
         alert("Oh No! Looks like we can't find where to type in the item numbers!");
         return;
     }
@@ -336,7 +336,7 @@ async function BECKER_startAutomationProcess() {
     async function BECKER_automateItem(item) {
         await new Promise(r => setTimeout(r, 500));
         // input item number
-        document.getElementById('input_viewItem_Item').value = item[0];
+        document.getElementById('input_viewCcDetail_Item').value = item[0];
         // simulate 2 enter-keys
         setTimeout(() => {window.sendEnterToPython();},  10);
         setTimeout(() => {window.sendEnterToPython();}, 200);
@@ -359,7 +359,7 @@ async function BECKER_startAutomationProcess() {
         
         // wait until item number input exists
         await new Promise(r => setTimeout(r, 1500));
-        while (!document.getElementById('input_viewItem_Item')) {
+        while (!document.getElementById('input_viewCcDetail_Item')) {
             await new Promise(r => setTimeout(r, 250));
         }
     }
