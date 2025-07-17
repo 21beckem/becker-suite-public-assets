@@ -344,7 +344,7 @@ async function BECKER_startAutomationProcess() {
         
         // wait until count input exists
         await new Promise(r => setTimeout(r, 1500));
-        while (!document.getElementById("input_viewItem_Count")) {
+        while (!document.getElementById("input_viewCountLine_Counted")) {
             await new Promise(r => setTimeout(r, 250));
             if (BECKER_didThisItemCodeSayNoMatches(item)) return;
         }
@@ -352,7 +352,7 @@ async function BECKER_startAutomationProcess() {
 
 
         // input count
-        document.getElementById('input_viewItem_Count').value = item[1];
+        document.getElementById('input_viewCountLine_Counted').value = item[1];
         // simulate 2 enter-keys
         setTimeout(() => {window.sendEnterToPython();},  10);
         setTimeout(() => {window.sendEnterToPython();}, 200);
