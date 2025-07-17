@@ -347,15 +347,8 @@ async function BECKER_startAutomationProcess() {
         while (!document.getElementById("input_viewItem_Count")) {
             await new Promise(r => setTimeout(r, 250));
             if (BECKER_didThisItemCodeSayNoMatches(item)) return;
-
-
-            await new Promise(r => setTimeout(r, 3000));                                   //  REMOVE THESE TWO
-            document.getElementById('input_viewItem_Item').id = 'input_viewItem_Count';    //  LINES LATER!!!!
         }
         await new Promise(r => setTimeout(r, 500));
-
-        document.getElementById('input_viewItem_Count').id = 'input_viewItem_Item';        // REMOVE THESE TWO
-        return;                                                                            // LINES LATER!!!!
 
 
         // input count
