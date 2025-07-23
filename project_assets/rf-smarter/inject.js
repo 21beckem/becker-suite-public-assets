@@ -343,7 +343,7 @@ async function BECKER_startAutomationProcess() {
         console.log('waiting for count input');
         
         // wait until count input exists
-        await new Promise(r => setTimeout(r, 1500));
+        await new Promise(r => setTimeout(r, 2000));
         while (!document.getElementById("input_viewCountLine_Counted")) {
             await new Promise(r => setTimeout(r, 250));
             if (BECKER_didThisItemCodeSayNoMatches(item)) return;
@@ -358,7 +358,7 @@ async function BECKER_startAutomationProcess() {
         setTimeout(() => {window.sendEnterToPython();}, 200);
         
         // wait until item number input exists
-        await new Promise(r => setTimeout(r, 1500));
+        await new Promise(r => setTimeout(r, 2000));
         while (!document.getElementById('input_viewCcDetail_Item')) {
             await new Promise(r => setTimeout(r, 250));
         }
